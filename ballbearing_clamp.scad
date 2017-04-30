@@ -3,17 +3,18 @@ in = 25.4*mm;
 
 $fn=60;
 
-wall = 1.2*mm;
+wall = 1.5*mm;
 flange = 3*mm;
-hole_depth = 3/16*in;
-slop = 0.05*mm;
+hole_depth = 1/8*in;
+slop = 0.1*mm;
 bearing_rad = 1/4 *in + slop;
-cut_thickness = 0.4*mm;
+cut_thickness = 0.7*mm;
 
 plug_rad = bearing_rad + wall;
 epsilon = 0.01;
 
-num_cuts = 10;
+echo("plug radius", plug_rad, "mm");
+num_cuts = 15;
 
 rotate([180,0,0])
 
