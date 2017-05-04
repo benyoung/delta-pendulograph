@@ -63,6 +63,9 @@ module clip_with_holes() {
             translate([0,pendulum_rad-eps, clip_height/2])
             rotate([-90,0,0])
             screw();
+            translate([0,0,clip_height])
+            rotate([90,0,0])
+            cylinder(r=0.3*mm, h=2*in, center=true);
         }
     }
 }
