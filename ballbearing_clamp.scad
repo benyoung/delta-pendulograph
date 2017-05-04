@@ -6,7 +6,7 @@ $fn=60;
 wall = 1.5*mm;
 flange = 3*mm;
 hole_depth = 1/8*in;
-slop = 0.1*mm;
+slop = 0.15*mm;
 bearing_rad = 1/4 *in + slop;
 cut_thickness = 0.7*mm;
 
