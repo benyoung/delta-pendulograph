@@ -6,9 +6,9 @@ pendulum_rad = 1.325*in/2; // MADE-UP NUMBER
 
 wall = 2*mm;
 
-hole_rad = 1.5*mm;  
+hole_rad = 1.7*mm;  
 hole_depth = 1.25*in;
-countersink_rad = 3.5*mm;  
+countersink_rad = 3.8*mm;  
 hole_angle = 35;
 eps=0.01;
 $fn=60;
