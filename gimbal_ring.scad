@@ -20,7 +20,7 @@ true_axle_rad = 7.9*mm/2; // a tad small but this should be drilled out to size 
 bearing_axle_protrude=10*mm;
 bearing_axle_rad = 6.0*mm; // leaving quite a bit of clearance here
 //bearing_axle_len = 14*mm;
-bearing_outer_rad = 11.0*mm + slop;
+bearing_outer_rad = 12.0*mm + slop; //weirdly 11mm is also to small??
 //bearing_th = 6.5*mm + slop;
 // adapted for 608ZZ bearings.  should be just 7mm?? but it's dodgy at the edges
 bearing_th = 8.2*mm + slop;  
