@@ -4,7 +4,7 @@ in=25.4*mm;
 
 pendulum_rad = (1+5/16)*in/2;
 
-nut_rad = 5*mm; // MADE-UP NUMBER
+nut_rad = 6*mm; // MADE-UP NUMBER
 nut_th  = 4*mm; // MADE-UP NUMBER
 
 wood_piece_th = 6.90*mm;
@@ -77,7 +77,7 @@ module bolt_assembly() {
 module nut_assembly() {
     color("green")
     for(side=[-1,1]) {
-        translate([-nut_th,0,hole_z_offset])
+        translate([back_plate_standoff+eps,0,hole_z_offset])
         rotate([0,-90,0])
         translate([0,side*hole_y_offset,0])
         cylinder(r=nut_rad,h=nut_th,$fn=6);
@@ -109,7 +109,7 @@ module front_plate() {
 }
 
 module back_plate() {
-    translate([-back_plate_standoff,0,0])
+    //translate([-back_plate_standoff,0,0])
     difference() {
 
         union(){
