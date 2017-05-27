@@ -109,29 +109,39 @@ module front_plate() {
 }
 
 module back_plate() {
-    //translate([-back_plate_standoff,0,0])
-    difference() {
-
-        union(){
-            translate([-back_plate_th+back_plate_standoff,-hole_y_offset,0])
-            cube([back_plate_th, 2*hole_y_offset, 2*hole_z_offset]);
-            for(side=[-1,1]) {
-                translate([-back_plate_th+back_plate_standoff,side*hole_y_offset,
-                        hole_z_offset])
-                rotate([0,90,0])
-                cylinder(r=hole_z_offset,h=back_plate_th);
+    translate([-back_plate_standoff,0,0])
+    union(){
+        difference() {
+    
+            union(){
+                translate([-back_plate_th+back_plate_standoff,-hole_y_offset,0])
+                cube([back_plate_th, 2*hole_y_offset, 2*hole_z_offset]);
+                for(side=[-1,1]) {
+                    translate([-back_plate_th+back_plate_standoff,side*hole_y_offset,
+                            hole_z_offset])
+                    rotate([0,90,0])
+                    cylinder(r=hole_z_offset,h=back_plate_th);
+                }
+    
             }
-
+            union(){
+                bolt_assembly();
+                nut_assembly();
+                color("red") //pendulum
+                translate([-pendulum_offset,0,0])
+                cylinder(r=pendulum_rad, h=6*in, center=true);
+                
+            }
         }
-        union(){
-            bolt_assembly();
-            nut_assembly();
-            color("red") //pendulum
-            translate([-pendulum_offset,0,0])
-            cylinder(r=pendulum_rad, h=6*in, center=true);
-            
+        color("pink")
+        for(side=[-1,1]) { //support
+            translate([back_plate_standoff+eps,0,hole_z_offset])
+            rotate([0,-90,0])
+            translate([0,side*hole_y_offset,0])
+            cylinder(r1=0.75*nut_rad, r2=bolt_radius+bolt_clearance,h=nut_th);
         }
     }
+
 }
 
 rotate([0,90,0])
@@ -140,5 +150,9 @@ back_plate();
 translate([3*hole_z_offset,0,0])
 rotate([0,90,0])
 front_plate();
+
+
+
+
 
 
