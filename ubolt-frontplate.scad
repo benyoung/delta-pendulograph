@@ -4,7 +4,7 @@ in=25.4*mm;
 
 pendulum_rad = (1+5/16)*in/2;
 
-nut_rad = 10.65*mm/2; 
+nut_rad = 11.6*mm/2; // tweaked to be the right size
 nut_th  = 4*mm; // made-up number that turned out to be good enough
 
 wood_piece_th = 6.90*mm;
@@ -55,7 +55,7 @@ module wood_piece() {
 module bolt() {
     union() {
         translate([0,0,-eps])
-        cylinder(r=bolt_radius+bolt_clearance, h=bolt_len+eps,$fn=16);
+        cylinder(r=bolt_radius+bolt_clearance, h=bolt_len+eps,$fn=6);
         difference(){
             sphere(bolt_head_radius);
             cylinder(r=2*bolt_head_radius,h=2*bolt_head_radius);
@@ -138,7 +138,7 @@ module back_plate() {
             translate([back_plate_standoff+eps,0,hole_z_offset])
             rotate([0,-90,0])
             translate([0,side*hole_y_offset,0])
-            cylinder(r1=0.75*nut_rad, r2=bolt_radius+bolt_clearance,h=nut_th);
+            cylinder(r1=0.75*nut_rad, r2=bolt_radius+bolt_clearance+0.4*mm,h=nut_th+0.4*mm,$fn=6);
         }
     }
 
