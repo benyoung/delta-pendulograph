@@ -4,8 +4,8 @@ in=25.4*mm;
 
 pendulum_rad = (1+5/16)*in/2;
 
-nut_rad = 6*mm; // MADE-UP NUMBER
-nut_th  = 4*mm; // MADE-UP NUMBER
+nut_rad = 10.65*mm/2; 
+nut_th  = 4*mm; // made-up number that turned out to be good enough
 
 wood_piece_th = 6.90*mm;
 wood_piece_width= 25.69*mm;
