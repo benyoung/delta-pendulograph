@@ -3,8 +3,8 @@ eps=0.01;
 $fn=60;
 
 module magnet(th) {
-    cylinder(r = 5*mm+th, h = 2.5*mm+th);
-    translate([0,0,2.5*mm+th-eps])
+    cylinder(r = 5*mm+th, h = 3*mm+th);
+    translate([0,0,3*mm+th-eps])
     cylinder(r1=5*mm+th,r2=0,h=5*mm+th);
 }
 
@@ -27,6 +27,6 @@ module shell(){
 difference(){
     shell();
     translate([0,0,-eps])
-    part(0.05,100*mm);
+    part(0.1*mm,100*mm);
     
 }
