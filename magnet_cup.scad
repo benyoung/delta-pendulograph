@@ -19,14 +19,14 @@ module part(th, height) {
 }
 
 module shell(){
-    cylinder(r=6*mm,h=3*mm);
+    cylinder(r=6.2*mm,h=3*mm);
     translate([0,0,3*mm-eps])
-    cylinder(r1=6*mm, r2=2*mm, h=10*mm);  
+    cylinder(r1=6.2*mm, r2=2*mm, h=10*mm);  
 }
 
 difference(){
     shell();
     translate([0,0,-eps])
-    part(0.1*mm,100*mm);
+    part(0.2*mm,100*mm);
     
 }
