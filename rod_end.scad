@@ -15,14 +15,14 @@ rotate([0,90,0])
 difference(){
     cube([10*mm, 10*mm, 1*in],center=true);
     translate([0,0,-1*mm])
-    shaft(0.2*mm,1*in);
+    shaft(0.1*mm,1*in);
 }
 
 
 wall = 1.5*mm;
 flange = 3*mm;
 hole_depth = 1/8*in;
-slop = 0.15*mm;
+slop = 0.05*mm;
 bearing_rad = 1/4 *in + slop;
 cut_thickness = 0.7*mm;
 
