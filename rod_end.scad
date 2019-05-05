@@ -10,14 +10,15 @@ module shaft(th, height) {
     cylinder(r=3.9*mm+th, h=height, center=true);
 }
 
-translate([0,0,5*mm])
-rotate([0,90,0])
-difference(){
-    cube([10*mm, 10*mm, 1*in],center=true);
-    translate([0,0,-1*mm])
-    shaft(0.15*mm,1*in);
+module arrow_holder() {
+    translate([0,0,5*mm])
+    rotate([0,90,0])
+    difference(){
+        cube([10*mm, 10*mm, 1*in],center=true);
+        translate([0,0,-1*mm])
+        shaft(0.15*mm,1*in);
+    }
 }
-
 
 wall = 1.5*mm;
 flange = 3*mm;
@@ -60,20 +61,66 @@ module cup() {
     }
 }
 
-cup();
 
-translate([0,1*in,0])
-cup();
-
-
-translate([0.7*in,0.3*in,0])
-cube([0.12*in,0.4*in,0.12*in]);
-
-translate([-0.13*in,-0.1*mm,0])
-difference(){
-    translate([0,0.2*in,0])
-    rotate([0,0,-45])
-    cube([0.12*in,0.9*in,0.12*in]);
+module ball_endrod() {
+    cup();
     
-    cube([10*mm,10*mm,1*in],center=true);
+    translate([0,1*in,0])
+    cup();
+    
+    translate([0.7*in,0.3*in,0])
+    cube([0.12*in,0.4*in,0.12*in]);
+    
+    translate([-0.13*in,-0.1*mm,0])
+    difference(){
+        translate([0,0.2*in,0])
+        rotate([0,0,-45])
+        cube([0.12*in,0.9*in,0.12*in]);
+        
+        cube([10*mm,10*mm,1*in],center=true);
+    }
+    
+    arrow_holder();
 }
+
+//ball_endrod();
+
+module magnet_holder(){
+    translate([0,0,3.5*mm])
+    difference(){
+        cube([10*mm, 7*mm, 7*mm],center=true);
+        rotate([0,90,0])
+        cylinder(r=2.51*mm,h=12*mm,center=true);
+    }
+}
+
+
+module magnet_endrod() {
+    magnet_holder();
+    
+    translate([0,1*in,0])
+    magnet_holder();
+    
+    translate([0.07*in,0.13*in,0])
+    cube([0.12*in,0.76*in,0.12*in]);
+    
+    translate([-0.85*in,-0.1*mm,0])
+    difference(){
+        translate([0,0.2*in,0])
+        rotate([0,0,-45])
+        cube([0.12*in,1.1*in,0.12*in]);
+        
+        union(){
+            cube([10*mm,10*mm,1*in],center=true);
+            translate([0.85*in,1*in,0])
+            cube([10*mm,6.8*mm,6.8*mm],center=true);
+        }
+    
+    }
+    
+    translate([-0.695*in,0,0])
+    arrow_holder();
+}
+
+
+magnet_endrod();
