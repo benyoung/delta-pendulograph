@@ -20,7 +20,7 @@ module magnet() {
     union() {
         cylinder(r=magnet_rad+slop, h=magnet_th);
         translate([0,0,magnet_th-eps])
-        cylinder(r1=magnet_rad+slop,r2=magnet_rad,h=magnet_depth_extend);
+        cylinder(r1=magnet_rad+slop,r2=magnet_rad+slop/2,h=magnet_depth_extend);
         //translate([0,0,bearing_rad+magnet_center_th])
         //sphere(bearing_rad);
     }
