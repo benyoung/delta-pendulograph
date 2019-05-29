@@ -3,11 +3,12 @@ cm = 10*mm;
 in=25.4*mm;
 $fn=30;
 
-slop = 0.1*mm;
+bar_slop = 0.1*mm;
+magnet_slop = 0.125*mm;
 magnet_depth_extend=0.9*mm;
 
 makerbeam_length=100*mm;
-makerbeam_width = 10*mm+slop;
+makerbeam_width = 10*mm+bar_slop;
 bearing_rad = 5*mm;
 magnet_rad = 6*mm;
 magnet_th=3.7*mm;
@@ -18,9 +19,9 @@ magnet_center_th = sphere_plus_magnet_diameter - 2*bearing_rad;
 
 module magnet() {
     union() {
-        cylinder(r=magnet_rad+slop, h=magnet_th);
+        cylinder(r=magnet_rad+magnet_slop, h=magnet_th);
         translate([0,0,magnet_th-eps])
-        cylinder(r1=magnet_rad+slop,r2=magnet_rad+slop/2,h=magnet_depth_extend);
+        cylinder(r1=magnet_rad+magnet_slop,r2=magnet_rad+0.8*magnet_slop,h=magnet_depth_extend);
         //translate([0,0,bearing_rad+magnet_center_th])
         //sphere(bearing_rad);
     }
