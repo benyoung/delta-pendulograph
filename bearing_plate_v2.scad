@@ -3,8 +3,11 @@ cm = 10*mm;
 in=25.4*mm;
 $fn=30;
 
+slop = 0.1*mm;
+magnet_depth_extend=0.9*mm;
+
 makerbeam_length=100*mm;
-makerbeam_width = 10*mm;
+makerbeam_width = 10*mm+slop;
 bearing_rad = 5*mm;
 magnet_rad = 6*mm;
 magnet_th=3.7*mm;
@@ -14,8 +17,10 @@ sphere_plus_magnet_diameter = 11.6*mm;
 magnet_center_th = sphere_plus_magnet_diameter - 2*bearing_rad;
 
 module magnet() {
-    difference() {
-        cylinder(r=magnet_rad, h=magnet_th);
+    union() {
+        cylinder(r=magnet_rad+slop, h=magnet_th);
+        translate([0,0,magnet_th-eps])
+        cylinder(r1=magnet_rad+slop,r2=magnet_rad,h=magnet_depth_extend);
         //translate([0,0,bearing_rad+magnet_center_th])
         //sphere(bearing_rad);
     }
@@ -34,7 +39,7 @@ module stuff_to_hold() {
     }
     difference(){
         cube([makerbeam_length, makerbeam_width, makerbeam_width], center=true);
-        *for(rot=[0,90,180,270])
+        *for(rot=[90,270])
         rotate([rot,0,0])
         translate([0*mm,0*mm,5*mm])
         cube([makerbeam_length+1*mm, 2.8*mm,2.8*mm], center=true);
@@ -43,17 +48,17 @@ module stuff_to_hold() {
 
 
 wall = 2*mm;
-holder_th = magnet_th+wall;
+holder_th = magnet_th+wall+magnet_depth_extend;
 holder_width = 2*magnet_rad+2*wall;
 
 module holder() {
 
     translate([3*mm,0,-0.*mm])
     cube([10*mm,9.99*mm,10*mm],center=true);
-    translate([0,0,-holder_th/2])
+    translate([0,0,-holder_th/2+magnet_depth_extend/2])
     cube([holder_width, 2*bearing_offset, holder_th],center=true);
     for(side = [-1,1])
-    translate([0,side*bearing_offset,-holder_th])
+    translate([0,side*bearing_offset,-holder_th+magnet_depth_extend/2])
     cylinder(r=holder_width/2, h=holder_th);
 }
 
