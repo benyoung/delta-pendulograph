@@ -8,17 +8,24 @@ module beam(){
     cube([10*mm + slop, 100*mm, 10*mm+slop], center=true);
 }
 
+center_rad = 10*mm;
+wall=2*mm;
 
 holder_len=20*mm;
 module beam_holder() {
+    
     difference(){
         cube([10*mm+2*wall, holder_len,10*mm+2*wall], center=true); 
         beam();
+        
+        color("pink")
+        translate([0,holder_len/2-sqrt(2)*5*mm+1*mm,0])
+        rotate([0,0,45])
+        translate([0,0,-5*mm])
+        cube([15*mm,15*mm,10*mm]);
     }
 }
 
-center_rad = 10*mm;
-wall=2.5*mm;
 
 
 cyl_height = 10*mm+2*wall;
