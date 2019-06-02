@@ -6,16 +6,18 @@ wall=2*mm;
 center_rad=13*mm;
 
 pen_width = 0.5*in+slop;
-pen_depth = 0.5625*in+slop;
+pen_depth = 0.620*in+slop;
 
+
+holder_height=1*in;
 beam_offset = center_rad+wall+5*mm;
 $fn=16;
 
 hole_offset = 0.42*in;
 
 difference(){
-    translate([0,0,-0.1875*in])
-    linear_extrude(height=0.375*in)
+    translate([0,0,-holder_height/2])
+    linear_extrude(height=holder_height)
     difference(){
         union(){
             offset(wall)
