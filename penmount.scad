@@ -1,6 +1,6 @@
 mm=1;
 in=25.4*mm;
-slop = 0.15*mm;
+slop = 0.17*mm;
 eps=0.01*mm;
 
 
@@ -8,7 +8,7 @@ module beam(){
     cube([10*mm + slop, 100*mm, 10*mm+slop], center=true);
 }
 
-center_rad = 10*mm;
+center_rad = 13*mm;
 wall=2*mm;
 
 holder_len=20*mm;
@@ -64,7 +64,7 @@ union(){
                 translate([0,35*mm,0*mm])
                 beam();
                 rotate([90,0,0])
-                cylinder(r=2*mm,h=2*in,center=true);
+                cylinder(r=3*mm,h=2*in,center=true,$fn=16);
             } 
                 
                 
@@ -75,9 +75,12 @@ union(){
             color("blue")
                 rotate([90,0,0])
             union(){
-                cylinder(r1=0, r2=6*mm,h=6*mm);
+                translate([0,0,0.2*mm])
+                cylinder(r1=0, r2=3.5*mm,h=3.5*mm);
+                translate([0,0,3.5*mm-eps])
+                cylinder(r=3.5*mm,h=2*mm);
                 translate([0,0,2*mm])
-                cylinder(r=1.75*mm,h=40*mm);
+                cylinder(r=2*mm,h=40*mm,$fn=6);
             }
         }
         }
