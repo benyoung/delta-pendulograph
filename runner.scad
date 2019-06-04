@@ -22,14 +22,14 @@ module bolt() {
     rotate([0,90,0])
     union(){
         cylinder(r=1.75*mm,h=1*in);
-        cylinder(r=3.3*mm,h=2*wall, $fn=6);
+        cylinder(r=3.5*mm,h=2*wall, $fn=6);
     }    
 }
 
 hole_sep = 0.35*in;
-plate_width=0.375*in;
+plate_width=7*mm;
 plate_sep = 1.25*in;
-plate_th = 1/16*in;
+plate_th = 1/16*in + slop;
 tab_len = 1/2*in;
 
 
@@ -49,7 +49,7 @@ difference(){
                 ]);
                 translate([-beam_offset,0])
     
-                square([10*mm+slop, 10*mm+slop], center=true);
+                square([10*mm+2*slop, 10*mm+2*slop], center=true);
                 square([pen_width, pen_depth],center=true);
                 translate([2*wall,0,0])
                 square([pen_width, pen_depth],center=true);
@@ -63,7 +63,7 @@ difference(){
             
             square([pen_width, pen_depth],center=true);
             translate([-hole_offset,0])
-            circle(r=0.8*mm);
+            circle(r=1*mm);
         }
     }
     translate([0,0,hole_sep])
